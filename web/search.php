@@ -71,13 +71,9 @@ $renderArr = array(
 
 $responseContent = $App->render('search.html', $renderArr);
 
-// RENDER WITH FOOTER
-// $getFooterContent = fn(): string
-//     => $App->render('todolist-panel.html', array())
-//     . $App->render('footer.html', array());
-
 $getFooterContent = fn(): string
-    => $App->render('todolist-panel.html', array());
+    => $App->render('todolist-panel.html', array())
+    . $App->render('footer.html', array());
 
 /**
  * Here the search begins

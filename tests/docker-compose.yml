@@ -4,6 +4,8 @@
 
 services:
     web:
+        ports:
+          - "127.0.0.1:1234:443"
         image: elabtmp
         build:
           context: ..
@@ -17,8 +19,8 @@ services:
             - SETUID
             - FOWNER
             - DAC_OVERRIDE
-        env_file:
-            - elabftw-user.env
+        # env_file:
+        #     - elabftw-user.env
         environment:
             - DB_HOST=mysqltmp
             - DB_NAME=phpunit
@@ -27,13 +29,13 @@ services:
             - DB_PASSWORD=phpunit
             - SECRET_KEY=def00000195a92432f2ebb86bf6e9b9646b45ea955cab7b8f2d96ba2259a85c9e09b04647078c425c5392cb631fa3d9816974bbe8e458d61e16f897ef36c0def362458fd
             - SERVER_NAME=elab.local
-            - DISABLE_HTTPS=false
+            - DISABLE_HTTPS=true
             - ENABLE_LETSENCRYPT=false
             - MAX_UPLOAD_SIZE=200M
             - PHP_TIMEZONE=Europe/Paris
             - TZ=Europe/Paris
             - DEV_MODE=true
-            - SITE_URL=https://elab.local:3148
+            - SITE_URL=http://localhost:443
             - ELAB_AWS_ACCESS_KEY=yep
             - ELAB_AWS_SECRET_KEY=yop
             - MAX_PHP_MEMORY=512M
